@@ -8,6 +8,7 @@ let key = process.env.IGDB_KEY;
 let db = require("../models");
 const { response } = require("express");
 
+getAllGames();
 function getAllGames() {
   for (let i = 0; i < 1; i++){  
 	// First call for 100 Games with the gameID,name, and Summary and critic rating.
@@ -36,7 +37,7 @@ function getAllGames() {
 				}
 
 				db.Game.create({
-					gameID: response.data[i].id,
+					gameId: response.data[i].id,
 					title: response.data[i].name,
 					rating: response.data[i].aggregated_rating,
 					summary: response.data[i].summary,
@@ -123,5 +124,5 @@ function getGenres() {
     });
 };
 
-module.exports.getAllGames = getAllGames;
+
 
